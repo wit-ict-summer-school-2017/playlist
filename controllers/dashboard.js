@@ -1,6 +1,6 @@
 'use strict';
 
-const accounts = require ('./accounts.js');
+const accounts = require('./accounts.js');
 const logger = require('../utils/logger');
 const playlistStore = require('../models/playlist-store');
 const uuid = require('uuid');
@@ -18,7 +18,7 @@ const dashboard = {
   },
 
   deletePlaylist(request, response) {
-    const playlistId = request.params.id;
+    const playlistId =  request.params.id;
     logger.debug(`Deleting Playlist ${playlistId}`);
     playlistStore.removePlaylist(playlistId);
     response.redirect('/dashboard');
@@ -33,6 +33,7 @@ const dashboard = {
       songs: [],
     };
     logger.debug('Creating a new Playlist', newPlayList);
+
     playlistStore.addPlaylist(newPlayList);
     response.redirect('/dashboard');
   },
